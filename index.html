@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Marketing Visiting Card</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Remix Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+  <style>
+    /* Custom CSS for gradients and animations */
+    .light-theme {
+      --bg-gradient: linear-gradient(135deg, #fab0b0, #3661d4, #8c22ca, #e7baba);
+      --card-bg: #ffffff;
+      --text-color: #1f2937;
+      --icon-color: #000000;
+      --hover-color: #000000;
+    }
+
+    .dark-theme {
+      --bg-gradient: linear-gradient(135deg, #0a0a1a, #1a1a2e, #4a148c, #880e4f);
+      --card-bg: #ffffff;
+      --text-color: #1f2937;
+      --icon-color: #ff6b6b;
+      --hover-color: #4a90e2;
+    }
+
+    body {
+      background-image: var(--bg-gradient);
+      color: var(--text-color);
+      transition: background-image 0.3s, color 0.3s;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .card {
+      background-color: var(--card-bg);
+      color: var(--text-color);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease-in-out;
+    }
+
+    .theme-toggle {
+      color: var(--icon-color);
+      background: none;
+      border: none;
+      cursor: pointer;
+      transition: color 0.3s;
+    }
+
+    .theme-toggle:hover {
+      color: var(--hover-color);
+    }
+    .background-photo {
+  background-image: url('./Photography Logo copy.jpg');
+  background-size: contain; /* Ensures the image fits within the container */
+  background-repeat: no-repeat; /* Prevents the image from repeating */
+  background-position: center; /* Centers the image */
+  height: 300px; /* Fixed height */
+  width: 100%; /* Full width */
+  max-width: 800px; /* Maximum width */
+  border-radius: 45px; /* Proper border radius */
+  margin-bottom: 10px; /* Space below the photo */
+  overflow: hidden; /* Ensures the image doesn't overflow */
+}
+
+    @media (max-width: 768px) {
+      .background-photo {
+        height: 200px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .background-photo {
+        height: 150px;
+      }
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes scaleIn {
+      from { transform: scale(0.9); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    .animate-fadeIn {
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    .animate-scaleIn {
+      animation: scaleIn 0.5s ease-in-out;
+    }
+
+    .loading-spinner {
+      border: 4px solid rgba(255, 255, 255, 0.3);
+      border-top: 4px solid #ffffff;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+<body class="light-theme">
+
+
+  <!-- Main Content -->
+  <div id="content" class="">
+    <!-- Theme Toggle Button -->
+    <button id="theme-toggle" class="fixed top-6 right-6 p-2 theme-toggle">
+      <i id="theme-icon" class="fas fa-moon text-2xl"></i>
+    </button>
+
+    <!-- Background Photo Division -->
+    <div class="background-photo animate-fadeIn"></div>
+
+    <!-- Business Card -->
+    <div class="card p-8 rounded-2xl w-full max-w-4xl min-h-1/2 animate-scaleIn">
+      <!-- Top Division: Photo, Name, and Address -->
+      <div class="flex flex-col md:flex-row items-center md:items-start md:space-x-8">
+        <!-- Photo -->
+        <img src="icon.jpg" alt="Profile Picture" class="w-32 h-32 rounded-lg mb-4 md:mb-0">
+        <!-- Name and Address -->
+        <div class="text-center md:text-left">
+          <h1 class="text-3xl font-bold mt-4 mb-2">Rainbow Snapshoot</h1>
+          <p class="text-gray-600">All types of photography & videography solutions.</p>
+        </div>
+      </div>
+
+      <!-- Divider -->
+      <div class="border-b border-gray-200 my-6"></div>
+
+      <!-- Bottom Division: Details -->
+      <div>
+        <!-- Copyable Phone Number -->
+        <div class="flex justify-center items-center mb-6">
+          <p class="mr-2">+91 96170 24009</p>
+          <button onclick="copyNumber()" class="p-2 bg-gray-200 rounded-lg hover:bg-gray-300 transition-all duration-300">
+            <i class="ri-file-copy-line"></i>
+          </button>
+        </div>
+
+        <!-- Social Media Icons -->
+        <div class="flex justify-center space-x-8">
+          <!-- Call Icon -->
+          <a href="tel:+919617024009" class="hover:text-blue-500 transition-all duration-300">
+            <i class="ri-phone-fill text-4xl"></i>
+          </a>
+          <!-- WhatsApp Icon -->
+          <a href="https://wa.me/919617024009" target="_blank" class="hover:text-green-500 transition-all duration-300">
+            <i class="ri-whatsapp-line text-4xl"></i>
+          </a>
+          <!-- Instagram Icon -->
+          <a href="https://www.instagram.com/rainbowsnapshoot/profilecard/" target="_blank" class="hover:text-pink-500 transition-all duration-300">
+            <i class="ri-instagram-line text-4xl"></i>
+          </a>
+          <!-- Facebook Icon -->
+          <a href="#" target="_blank" class="hover:text-blue-600 transition-all duration-300">
+            <i class="ri-facebook-fill text-4xl"></i>
+          </a>
+          <!-- Google Maps Icon -->
+          <a href="https://maps.app.goo.gl/5YAMDG8mP8q3MmvA6?g_st=iwb" target="_blank" class="hover:text-red-500 transition-all duration-300">
+            <i class="ri-map-pin-fill text-4xl"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript -->
+  <script>
+    // Loading Animation
+    setTimeout(() => {
+      document.getElementById('loading').style.display = 'none';
+      document.getElementById('content').style.display = 'block';
+    }, 2000);
+
+    // Theme Toggle Functionality
+    const themeToggle = document.getElementById('theme-toggle');
+    const themeIcon = document.getElementById('theme-icon');
+    const body = document.body;
+
+    // Function to set theme
+    const setTheme = (isDark) => {
+      body.classList.toggle('dark-theme', isDark);
+      body.classList.toggle('light-theme', !isDark);
+      themeIcon.classList.toggle('fa-moon', !isDark);
+      themeIcon.classList.toggle('fa-sun', isDark);
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    };
+
+    // Toggle theme on button click
+    themeToggle.addEventListener('click', () => {
+      const isDark = !body.classList.contains('dark-theme');
+      setTheme(isDark);
+    });
+
+    // Check for saved theme in localStorage
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark') {
+      setTheme(true);
+    } else {
+      setTheme(false); // Default to light theme
+    }
+
+    // Copy Phone Number Functionality
+    const copyNumber = () => {
+      const number = "+91 12345 67890";
+      navigator.clipboard.writeText(number).then(() => {
+        alert("Number copied to clipboard: " + number);
+      });
+    };
+  </script>
+</body>
+</html>
